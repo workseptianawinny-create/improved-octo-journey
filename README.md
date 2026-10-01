@@ -15,6 +15,7 @@ Tema besar 2026–2030
 | File | Isi | Kapan dipakai |
 |---|---|---|
 | [`LIFE-DESIGN.md`](LIFE-DESIGN.md) | Dokumen induk: 12 bagian rencana hidup 2026–2030 | Dibaca ulang tiap awal kuartal |
+| [`winny-37-life-design.html`](winny-37-life-design.html) | **Versi HTML 1 file** — semua bagian + checklist Q4 interaktif + Life Scorecard (tersimpan di browser, bisa unduh CSV, bisa cetak ke PDF) | Download, buka di browser HP/laptop |
 | [`MANIFESTO.md`](MANIFESTO.md) | Manifesto Winny 37 | Dibaca saat ragu / lelah / mau bilang "iya" padahal harusnya "tidak" |
 | [`action-plan/q4-2026-clean-ledger.md`](action-plan/q4-2026-clean-ledger.md) | Checklist eksekusi fase **THE CLEAN LEDGER** (Okt–Des 2026), diurutkan per prioritas | Dicek tiap minggu |
 | [`templates/weekly-review.md`](templates/weekly-review.md) | Review mingguan 15 menit | Setiap Minggu malam |

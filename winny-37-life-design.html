@@ -1,0 +1,545 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Winny 37 · Life Design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf7f2; --surface:#ffffff; --surface-2:#f3eee6; --ink:#1f1b16; --muted:#6b6258;
+  --line:#e4ddd2; --accent:#9a4d2e; --accent-soft:#f4e3d9; --gold:#b08a3e;
+  --p1:#b3261e; --p2:#a07400; --p3:#2e7d4f;
+  --radius:14px; --maxw:880px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#16130f; --surface:#1f1b16; --surface-2:#29241d; --ink:#f1ebe2; --muted:#a99e90;
+    --line:#3a332a; --accent:#e39a74; --accent-soft:#3a2a21; --gold:#d6b26a;
+    --p1:#f08a80; --p2:#e2bd5a; --p3:#79c99a;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#16130f; --surface:#1f1b16; --surface-2:#29241d; --ink:#f1ebe2; --muted:#a99e90;
+  --line:#3a332a; --accent:#e39a74; --accent-soft:#3a2a21; --gold:#d6b26a;
+  --p1:#f08a80; --p2:#e2bd5a; --p3:#79c99a;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.2;margin:0 0 .5em}
+h2{font-size:1.65rem;margin-top:0}
+h3{font-size:1.1rem;margin-top:1.4em}
+p{margin:.4em 0 .9em}
+a{color:var(--accent)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 16px}
+
+/* toolbar */
+.bar{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;gap:8px;align-items:center;padding-top:10px;padding-bottom:10px;overflow-x:auto}
+.bar a.nav{white-space:nowrap;font-size:.82rem;color:var(--muted);text-decoration:none;padding:4px 8px;border-radius:8px}
+.bar a.nav:hover{background:var(--surface-2);color:var(--ink)}
+.bar .sp{flex:1}
+button{font:inherit;font-size:.82rem;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:9px;padding:6px 12px;cursor:pointer;white-space:nowrap}
+button:hover{border-color:var(--accent)}
+
+/* hero */
+.hero{padding:64px 0 40px;text-align:center}
+.eyebrow{letter-spacing:.18em;text-transform:uppercase;font-size:.75rem;color:var(--accent);font-weight:600}
+.hero h1{font-size:clamp(2.6rem,9vw,4.6rem);margin:.15em 0 .1em;letter-spacing:-.02em}
+.flow{font-weight:600;color:var(--muted);letter-spacing:.06em}
+.quote{max-width:620px;margin:28px auto 0;font-family:Fraunces,serif;font-size:1.2rem;font-style:italic}
+.tagline{display:inline-block;margin-top:24px;padding:8px 16px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:600;font-size:.9rem}
+
+/* sections */
+section{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px;margin:20px 0;scroll-margin-top:64px}
+.num{font-family:Fraunces,serif;color:var(--gold);font-size:.95rem;font-weight:600;letter-spacing:.08em}
+.meta{color:var(--muted);font-size:.9rem;margin-bottom:1em}
+ul{padding-left:1.2em;margin:.3em 0 1em}
+li{margin:.2em 0}
+.callout{border-left:3px solid var(--accent);background:var(--accent-soft);padding:12px 16px;border-radius:0 10px 10px 0;margin:16px 0;font-weight:500}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.card{background:var(--surface-2);border-radius:12px;padding:14px 16px}
+.card b{display:block;font-family:Fraunces,serif;font-size:1.05rem;margin-bottom:4px}
+.card small{color:var(--muted)}
+.positioning{text-align:center;padding:22px 12px;border:1px dashed var(--gold);border-radius:12px;margin:16px 0}
+.positioning .name{font-family:Fraunces,serif;font-size:1.5rem;font-weight:700;letter-spacing:.04em}
+.positioning .roles{color:var(--muted);font-weight:500;margin-top:6px}
+
+table{width:100%;border-collapse:collapse;font-size:.93rem;margin:10px 0 16px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600}
+.tbl{overflow-x:auto}
+
+/* timeline */
+.timeline{display:grid;gap:10px}
+.tl{display:grid;grid-template-columns:70px 1fr;gap:14px;align-items:start}
+.tl .yr{font-family:Fraunces,serif;font-weight:700;font-size:1.15rem;color:var(--accent)}
+.tl .body{border-left:2px solid var(--line);padding-left:14px}
+
+/* roadmap */
+.road{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.step{background:var(--surface-2);border-radius:12px;padding:14px 10px;text-align:center}
+.step .age{font-family:Fraunces,serif;font-size:1.8rem;font-weight:700;color:var(--accent)}
+.step .w{font-weight:700;letter-spacing:.08em;font-size:.85rem}
+.step small{display:block;color:var(--muted);font-size:.78rem;margin-top:4px}
+@media (max-width:640px){.road{grid-template-columns:1fr 1fr}.road .step:last-child{grid-column:span 2}}
+
+/* di balik tree */
+.tree{display:grid;gap:8px}
+.tree .node{display:flex;justify-content:space-between;gap:12px;padding:10px 14px;border-radius:10px;background:var(--surface-2)}
+.tree .node.future{background:transparent;border:1px dashed var(--line)}
+.tree .node span:last-child{color:var(--muted);text-align:right}
+.tree .label{font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:10px 0 2px}
+
+/* KLR */
+.klr{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media (max-width:640px){.klr{grid-template-columns:1fr}}
+.klr .card{border-top:4px solid}
+.klr .keep{border-color:var(--p3)}.klr .limit{border-color:var(--p2)}.klr .release{border-color:var(--p1)}
+
+/* checklist */
+.check{list-style:none;padding:0}
+.check li{display:flex;gap:10px;align-items:flex-start;padding:7px 0;border-bottom:1px solid var(--line)}
+.check input{margin-top:5px;width:18px;height:18px;accent-color:var(--accent);flex:none}
+.check label{cursor:pointer}
+.check input:checked+label{color:var(--muted);text-decoration:line-through}
+.tag{display:inline-block;font-size:.7rem;font-weight:700;padding:1px 7px;border-radius:6px;margin-right:6px;border:1px solid currentColor}
+.P1{color:var(--p1)}.P2{color:var(--p2)}.P3{color:var(--p3)}
+.progress{height:8px;background:var(--surface-2);border-radius:99px;overflow:hidden;margin:6px 0 2px}
+.progress div{height:100%;background:var(--accent);width:0;transition:width .3s}
+.pmeta{font-size:.82rem;color:var(--muted)}
+
+/* scorecard */
+.score input[type=range]{width:100%;accent-color:var(--accent)}
+.score td.v{font-family:Fraunces,serif;font-weight:700;font-size:1.1rem;width:44px;text-align:center}
+.score td.q{color:var(--muted);font-size:.86rem}
+.avg{font-family:Fraunces,serif;font-size:1.4rem;font-weight:700;color:var(--accent)}
+
+/* manifesto */
+.manifesto{background:var(--ink);color:var(--bg);border:none}
+.manifesto p{font-family:Fraunces,serif;font-size:1.15rem;margin:.55em 0}
+.manifesto .big{font-size:1.5rem;font-weight:700;color:var(--gold);margin-top:1em}
+.manifesto h2{color:var(--gold)}
+.closing{text-align:center;padding:40px 0 70px}
+.closing .q{font-family:Fraunces,serif;font-size:1.35rem;font-style:italic;margin-bottom:18px}
+.closing .w{color:var(--muted)}
+pre{white-space:pre-wrap;background:var(--surface-2);padding:14px;border-radius:10px;font-size:.85rem;font-family:ui-monospace,Menlo,monospace}
+details summary{cursor:pointer;font-weight:600;margin:10px 0}
+
+@media print{
+  .bar,.noprint{display:none!important}
+  body{background:#fff;color:#000}
+  section{break-inside:avoid-page;border-color:#ccc}
+  .manifesto{background:#fff;color:#000;border:1px solid #ccc}
+}
+</style>
+</head>
+<body>
+
+<div class="bar noprint"><div class="wrap">
+  <a class="nav" href="#s1">Clean Ledger</a>
+  <a class="nav" href="#s2">Identity</a>
+  <a class="nav" href="#s3">Academic</a>
+  <a class="nav" href="#s4">Money</a>
+  <a class="nav" href="#s5">Di Balik</a>
+  <a class="nav" href="#s6">Family</a>
+  <a class="nav" href="#s7">Health</a>
+  <a class="nav" href="#s8">Relasi</a>
+  <a class="nav" href="#s9">Roadmap</a>
+  <a class="nav" href="#q4">Q4 Checklist</a>
+  <a class="nav" href="#s10">Scorecard</a>
+  <a class="nav" href="#s11">Audit</a>
+  <a class="nav" href="#s12">Manifesto</a>
+  <span class="sp"></span>
+  <button id="theme" type="button">◐ Tema</button>
+  <button onclick="window.print()" type="button">🖨 Cetak / PDF</button>
+</div></div>
+
+<div class="wrap">
+
+<header class="hero">
+  <div class="eyebrow">Tema besar 2026–2030</div>
+  <h1>WINNY 37</h1>
+  <div class="flow">LIFE RESET → LIFE DESIGN → LEGACY</div>
+  <p class="quote">“Saya tidak lagi membangun hidup untuk membuktikan sesuatu kepada orang lain. Saya membangun hidup yang masuk akal bagi diri saya, keluarga saya, karya saya, dan masa depan saya.”</p>
+  <div class="tagline">Less proving. More building. Less noise. More meaning.</div>
+</header>
+
+<section id="s1">
+  <div class="num">01</div>
+  <h2>The Clean Ledger</h2>
+  <div class="meta">Oktober–Desember 2026 · Tema: <b>BERESKAN</b></div>
+  <p>Ini fase paling penting. Bukan menambah sebanyak-banyaknya hal baru, tetapi membersihkan yang menguras energi dan tidak lagi menghasilkan nilai.</p>
+  <div class="grid">
+    <div class="card"><b>Pekerjaan</b><ul>
+      <li>Scope &amp; kompensasi tidak jelas</li><li>Tanggung jawab tanpa authority</li><li>Kebiasaan mengerjakan semuanya sendiri</li><li>Pekerjaan “gratis” yang seharusnya profesional</li><li>Relasi profesional tanpa batas jelas</li></ul></div>
+    <div class="card"><b>Keuangan</b><ul>
+      <li>Pisahkan uang pribadi &amp; pekerjaan</li><li>Sistem cashflow bulanan</li><li>Identifikasi kebocoran</li><li>Bangun emergency fund</li><li>Bangun aset, bukan sekadar income</li></ul></div>
+    <div class="card"><b>Relasi</b><ul>
+      <li>Berhenti mengejar validasi</li><li>Berhenti menjelaskan diri kepada yang tidak ingin memahami</li><li>Bedakan yang butuh bantuan vs. yang memanfaatkan kebaikan</li></ul></div>
+    <div class="card"><b>Mental</b><ul>
+      <li>Tidak semua masalah harus Winny selesaikan</li><li>Tidak semua konflik harus Winny jawab</li><li>Tidak semua orang harus Winny selamatkan</li></ul></div>
+  </div>
+  <div class="callout">Prinsip 37: “Tidak semua yang bisa saya lakukan harus saya lakukan.”</div>
+</section>
+
+<section id="s2">
+  <div class="num">02</div>
+  <h2>The New Identity</h2>
+  <div class="meta">2027 · Tema: <b>POSITIONING</b></div>
+  <p>Usia 37–38 sebaiknya menjadi fase mengubah pengalaman menjadi <b>authority</b>.</p>
+  <div class="grid">
+    <div class="card"><b>Akademisi</b><small>Dosen · S3 Ilmu Manajemen · researcher</small></div>
+    <div class="card"><b>Practitioner</b><small>Governance · BUMD · management · strategic communication</small></div>
+    <div class="card"><b>Media</b><small>Radio · public speaking · MC · communication</small></div>
+    <div class="card"><b>Writer</b><small>Di Balik Mikrofon · Di Balik Diam · Di Balik Pertanyaan · Di Balik Panggung</small></div>
+  </div>
+  <p style="margin-top:14px">Jangan diperlakukan sebagai empat identitas terpisah. Buat satu positioning:</p>
+  <div class="positioning">
+    <div class="name">WINNY SEPTIANA SARI</div>
+    <div class="roles">Management Scholar × Governance Practitioner × Strategic Communicator × Author</div>
+  </div>
+  <p>Ini jauh lebih powerful daripada mencoba terlihat hebat di semua bidang sekaligus.</p>
+</section>
+
+<section id="s3">
+  <div class="num">03</div>
+  <h2>The Academic Capital</h2>
+  <div class="meta">2026–2030 · S3 bukan hanya gelar doktor — jadikan <b>intellectual capital</b></div>
+  <div class="timeline">
+    <div class="tl"><div class="yr">2026</div><div class="body">Academic foundation · research notebook · literature matrix · research framework · methodological foundation</div></div>
+    <div class="tl"><div class="yr">2027</div><div class="body">Literature review semakin solid · empirical dataset · conference/seminar · publication pipeline</div></div>
+    <div class="tl"><div class="yr">2028</div><div class="body">Dissertation empirical work · international publication · research collaboration</div></div>
+    <div class="tl"><div class="yr">2029</div><div class="body">Dissertation completion · defense · institutional/research impact</div></div>
+    <div class="tl"><div class="yr">2030</div><div class="body">Bukan lagi “mahasiswa doktoral”, tetapi <b>Dr. Winny</b> yang memiliki body of knowledge sendiri</div></div>
+  </div>
+  <div class="callout">Intellectual signature: governance, political shareholder behaviour, innovation &amp; public value pada BUMD.</div>
+</section>
+
+<section id="s4">
+  <div class="num">04</div>
+  <h2>The Money Reset</h2>
+  <div class="meta">Usia 37–40</div>
+  <p>Bukan <i>“Bagaimana saya bisa bekerja lebih banyak?”</i> — tetapi <b>“Bagaimana pengalaman saya menghasilkan lebih banyak value tanpa membutuhkan lebih banyak waktu saya?”</b></p>
+  <div class="grid">
+    <div class="card"><b>① Active Income</b><small>Pekerjaan profesional / executive role</small></div>
+    <div class="card"><b>② Academic Income</b><small>Teaching · training · consulting · research · executive education</small></div>
+    <div class="card"><b>③ Intellectual Property</b><small>Books · courses · frameworks · speaking materials · research products</small></div>
+    <div class="card"><b>④ Asset Income</b><small>Investasi · properti bila sesuai · financial assets · business ownership</small></div>
+  </div>
+  <div class="callout">Target jangka panjang: income tidak boleh hanya bergantung pada jam kerja Winny.</div>
+</section>
+
+<section id="s5">
+  <div class="num">05</div>
+  <h2>The “Di Balik” Era</h2>
+  <div class="meta">2027–2030 · Personal intellectual brand — sebuah ecosystem</div>
+  <div class="tree">
+    <div class="label">Sudah ada</div>
+    <div class="node"><span><b>Di Balik Mikrofon</b></span><span>Communication</span></div>
+    <div class="node"><span><b>Di Balik Diam</b></span><span>Listening &amp; emotional intelligence</span></div>
+    <div class="node"><span><b>Di Balik Pertanyaan</b></span><span>Leadership, interviewing &amp; thinking</span></div>
+    <div class="node"><span><b>Di Balik Panggung</b></span><span>Leadership, preparation &amp; execution</span></div>
+    <div class="label">Berkembang menjadi</div>
+    <div class="node future"><span><b>Di Balik Keputusan</b></span><span>Decision making</span></div>
+    <div class="node future"><span><b>Di Balik Kekuasaan</b></span><span>Governance &amp; institutions</span></div>
+    <div class="node future"><span><b>Di Balik Organisasi</b></span><span>Management</span></div>
+    <div class="node future"><span><b>Di Balik Nilai Publik</b></span><span>Public value</span></div>
+  </div>
+  <p style="margin-top:14px">Di titik ini pengalaman profesional + S3 + buku + media mulai bertemu.</p>
+</section>
+
+<section id="s6">
+  <div class="num">06</div>
+  <h2>Family Capital</h2>
+  <div class="meta">Jangan hanya membangun CV. Bangun manusia.</div>
+  <div class="callout">Anak-anak tidak membutuhkan ibu yang selalu sibuk menjadi hebat. Mereka membutuhkan ibu yang hadir, stabil, dan menjadi contoh.</div>
+  <div class="grid">
+    <div class="card"><b>Intellectual</b><small>Anak suka membaca, bertanya, berpikir</small></div>
+    <div class="card"><b>Character</b><small>Adab, tanggung jawab, empati</small></div>
+    <div class="card"><b>Global</b><small>Bahasa Inggris, geography, culture, technology</small></div>
+    <div class="card"><b>Emotional</b><small>Anak merasa: “Mama ada untuk aku.”</small></div>
+  </div>
+</section>
+
+<section id="s7">
+  <div class="num">07</div>
+  <h2>Health = Non-Negotiable</h2>
+  <div class="meta">Bukan detox mistis — reset yang realistis</div>
+  <div class="grid">
+    <div class="card"><b>Physical reset</b><ul><li>Tidur lebih teratur</li><li>Olahraga</li><li>Pemeriksaan kesehatan rutin</li><li>Makan lebih konsisten</li><li>Menjaga energi</li></ul></div>
+    <div class="card"><b>Mental reset</b><ul><li>Journaling</li><li>Quiet time</li><li>Digital boundaries</li><li>Tidak membawa semua masalah pekerjaan ke rumah</li></ul></div>
+  </div>
+  <div class="callout">Tetap powerful di usia 50, 60, bahkan 70.</div>
+</section>
+
+<section id="s8">
+  <div class="num">08</div>
+  <h2>Relationship Policy</h2>
+  <div class="klr">
+    <div class="card keep"><b>KEEP</b><ul><li>Menghargai</li><li>Jujur</li><li>Bertumbuh</li><li>Reciprocal</li><li>Membuat hidup lebih sehat</li></ul></div>
+    <div class="card limit"><b>LIMIT</b><ul><li>Selalu mengambil</li><li>Drama berulang</li><li>Menguras energi</li><li>Hanya datang ketika butuh</li></ul></div>
+    <div class="card release"><b>RELEASE</b><ul><li>Berkali-kali terbukti tidak sehat</li><li>Tak bisa diperbaiki dengan komunikasi</li><li>Membuat Winny kehilangan diri sendiri</li></ul></div>
+  </div>
+  <div class="callout">Boundary ≠ hostility.</div>
+  <h3>Filter permintaan baru</h3>
+  <ol>
+    <li>Mendukung prioritas besar (Keluarga · Kesehatan · Dr. Winny · 4 Mesin Ekonomi · DI BALIK)?</li>
+    <li>Scope-nya jelas?</li>
+    <li>Kompensasi / timbal baliknya jelas dan layak?</li>
+    <li>Ada waktu tanpa mengorbankan keluarga, tidur, riset?</li>
+    <li>Kalau menolak, apakah saya akan lega? <i>(kalau lega → itu jawabannya)</i></li>
+  </ol>
+  <p class="pmeta">4–5 ✓ → IYA · 2–3 ✓ → NEGOSIASI · 0–1 ✓ → TIDAK, dengan sopan</p>
+</section>
+
+<section id="s9">
+  <div class="num">09</div>
+  <h2>The 37–41 Roadmap</h2>
+  <div class="road">
+    <div class="step"><div class="age">37</div><div class="w">CLEAN</div><small>2026 · Clean your life</small></div>
+    <div class="step"><div class="age">38</div><div class="w">BUILD</div><small>2027 · Build your system</small></div>
+    <div class="step"><div class="age">39</div><div class="w">SCALE</div><small>2028 · Scale your value</small></div>
+    <div class="step"><div class="age">40</div><div class="w">LEAD</div><small>2029 · Lead with authority</small></div>
+    <div class="step"><div class="age">41</div><div class="w">LEGACY</div><small>2030 · Create your legacy</small></div>
+  </div>
+</section>
+
+<section id="q4">
+  <div class="num">Q4 2026</div>
+  <h2>Clean Ledger — Checklist</h2>
+  <div class="meta">Centang tersimpan otomatis di browser ini. <span class="tag P1">P1</span>urgent &amp; penting <span class="tag P2">P2</span>penting, bangun sistem <span class="tag P3">P3</span>bisa menunggu</div>
+  <div class="progress"><div id="bar"></div></div>
+  <div class="pmeta" id="pct">0%</div>
+  <div id="checklists"></div>
+  <details class="noprint"><summary>Draf pesan: negosiasi scope &amp; kompensasi</summary>
+<pre>Halo [Nama],
+
+Terima kasih atas kepercayaannya selama ini di [proyek/peran].
+Supaya saya bisa memberikan hasil terbaik, saya ingin memperjelas
+beberapa hal mulai [tanggal]:
+
+1. Scope: [apa saja yang termasuk / tidak termasuk]
+2. Kewenangan: [keputusan apa yang bisa saya ambil]
+3. Kompensasi: [fee / honor / skema]
+
+Kalau berkenan, kita bisa diskusikan 30 menit di [waktu].
+Terima kasih.
+
+Salam,
+Winny</pre></details>
+  <details class="noprint"><summary>Draf pesan: menolak / menutup dengan baik</summary>
+<pre>Halo [Nama],
+
+Terima kasih sudah memikirkan saya untuk [permintaan].
+Untuk periode ini saya sedang fokus menyelesaikan prioritas
+[akademik/pekerjaan/keluarga], jadi saya belum bisa mengambilnya.
+
+[Opsional: Saya bisa merekomendasikan [nama] / Saya bisa bantu
+dalam format [lebih kecil] dengan [kompensasi].]
+
+Semoga lancar, ya.
+Salam,
+Winny</pre></details>
+</section>
+
+<section id="s10" class="score">
+  <div class="num">10</div>
+  <h2>Life Scorecard</h2>
+  <div class="meta">Setiap akhir bulan, beri angka 0–10. Bukan mencari 10/10 semuanya — tapi menemukan mana yang terlalu banyak diberi energi dan mana yang terlantar.</div>
+  <p><label>Bulan: <input type="month" id="month" style="font:inherit;padding:4px 8px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink)"></label></p>
+  <div class="tbl"><table><thead><tr><th>Area</th><th>Pertanyaan</th><th style="width:30%">Skor</th><th></th></tr></thead><tbody id="scoreRows"></tbody></table></div>
+  <p>Rata-rata: <span class="avg" id="avg">–</span> · <span class="pmeta" id="lowest"></span></p>
+  <div class="noprint"><button type="button" id="saveScore">💾 Simpan bulan ini</button> <button type="button" id="csv">⬇ Unduh riwayat (CSV)</button></div>
+  <div class="tbl"><table id="history"></table></div>
+</section>
+
+<section id="s11">
+  <div class="num">11</div>
+  <h2>Five Questions Setiap Ulang Tahun</h2>
+  <div class="meta">Setiap 10 September — Annual Life Audit</div>
+  <ol>
+    <li>Apa yang tahun ini harus saya lepaskan?</li>
+    <li>Apa yang harus saya pertahankan?</li>
+    <li>Apa yang harus saya bangun?</li>
+    <li>Siapa yang ingin saya menjadi tahun depan?</li>
+    <li><b>Jika hidup saya tetap seperti sekarang selama lima tahun, apakah saya akan menyukainya?</b></li>
+  </ol>
+  <p class="pmeta">Pertanyaan terakhir sangat penting.</p>
+</section>
+
+<section id="s12" class="manifesto">
+  <div class="num">12</div>
+  <h2>Manifesto Winny 37</h2>
+  <p>Saya tidak sedang terlambat.</p>
+  <p>Saya sedang memasuki fase hidup ketika pengalaman mulai berubah menjadi kebijaksanaan.</p>
+  <p>Saya tidak perlu membawa semua yang pernah terjadi ke masa depan.</p>
+  <p>Saya boleh melepaskan pekerjaan yang tidak lagi memberi nilai.</p>
+  <p>Saya boleh mengatakan tidak.</p>
+  <p>Saya boleh memilih hidup yang lebih sederhana.</p>
+  <p>Saya boleh berhenti membuktikan diri.</p>
+  <p>Saya akan menjaga tubuh saya.</p>
+  <p>Saya akan hadir untuk keluarga saya.</p>
+  <p>Saya akan menyelesaikan pendidikan doktoral saya.</p>
+  <p>Saya akan membangun karya yang memiliki nama dan makna.</p>
+  <p>Saya akan mengubah pengalaman menjadi pengetahuan.</p>
+  <p>Saya akan mengubah pengetahuan menjadi karya.</p>
+  <p>Saya akan mengubah karya menjadi legacy.</p>
+  <p>Dan mulai usia 37, saya tidak lagi hidup sekadar untuk survive.</p>
+  <p class="big">Saya mulai hidup by design.</p>
+</section>
+
+<footer class="closing">
+  <div class="q">“Less proving. More building. Less noise. More meaning.”</div>
+  <div class="w">37 bukan usia untuk mengejar semua hal.<br>37 adalah usia untuk memilih apa yang layak dibawa sampai 47.</div>
+</footer>
+
+</div>
+
+<script>
+const store = {
+  get(k, d){ try{ const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; }catch(e){ return d; } },
+  set(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+};
+
+/* theme */
+(function(){
+  const root = document.documentElement;
+  const t = store.get('w37-theme', null);
+  if (t) root.dataset.theme = t;
+  document.getElementById('theme').onclick = () => {
+    const dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    root.dataset.theme = dark ? 'light' : 'dark';
+    store.set('w37-theme', root.dataset.theme);
+  };
+})();
+
+/* Q4 checklist */
+const plan = [
+  ['Oktober · Minggu 1 (1–4 Okt) — Inventaris', [
+    ['P1','Tulis semua komitmen aktif (pekerjaan, proyek, kepanitiaan, “bantuan”) dalam satu daftar'],
+    ['P1','Tandai tiap komitmen: scope jelas? kompensasi jelas? punya authority? → KEEP / NEGOSIASI / TUTUP'],
+    ['P1','Rekap semua rekening, e-wallet, kartu kredit, cicilan, langganan dalam satu sheet'],
+    ['P2','Isi Life Scorecard pertama sebagai baseline (Okt 2026)']]],
+  ['Oktober · Minggu 2 (5–11 Okt) — Keuangan dasar', [
+    ['P1','Pisahkan rekening pribadi dan rekening pekerjaan'],
+    ['P1','Lacak pengeluaran 30 hari terakhir → identifikasi 3 kebocoran terbesar'],
+    ['P1','Batalkan langganan / pengeluaran rutin yang tidak dipakai'],
+    ['P2','Tentukan target emergency fund (mis. 6× pengeluaran bulanan) + auto-debit bulanan']]],
+  ['Oktober · Minggu 3 (12–18 Okt) — Pekerjaan', [
+    ['P1','Siapkan percakapan scope + kompensasi untuk tiap komitmen NEGOSIASI'],
+    ['P1','Tentukan tanggal selesai & serah terima untuk tiap komitmen TUTUP'],
+    ['P2','Buat rate card sederhana (MC, speaking, training, konsultasi)']]],
+  ['Oktober · Minggu 4 (19–31 Okt) — Akademik & kesehatan', [
+    ['P2','Setup research notebook + literature matrix'],
+    ['P2','Booking medical check-up tahunan'],
+    ['P2','Tetapkan jam tidur & jam “HP off” — mulai dari 1 aturan saja'],
+    ['P2','Isi Life Scorecard akhir Oktober']]],
+  ['November — Boundaries & Systems', [
+    ['P1','Eksekusi semua percakapan NEGOSIASI / TUTUP (target selesai 15 Nov)'],
+    ['P1','Buat sistem cashflow bulanan: pemasukan → pos wajib → emergency fund → investasi → bebas'],
+    ['P2','Delegasikan 2 hal yang selama ini dikerjakan sendiri'],
+    ['P2','Research framework v1 (governance, political shareholder behaviour, innovation, public value BUMD)'],
+    ['P2','Jalankan KEEP / LIMIT / RELEASE untuk lingkaran terdekat & profesional'],
+    ['P2','Tetapkan 1 ritual keluarga mingguan tanpa HP'],
+    ['P3','Olahraga 3×/minggu, 20–30 menit (jalan cepat pun dihitung)'],
+    ['P2','Isi Life Scorecard akhir November']]],
+  ['Desember — Close the Books & Prepare BUILD 2027', [
+    ['P1','Tutup buku keuangan 2026: pemasukan, pengeluaran, posisi net worth awal'],
+    ['P1','Pastikan tidak ada pekerjaan “menggantung” tanpa scope yang terbawa ke 2027'],
+    ['P2','Methodological foundation v1 + target publication pipeline 2027'],
+    ['P2','Draf positioning statement 2027'],
+    ['P2','Tetapkan instrumen investasi pertama/rutin (sesuai profil risiko)'],
+    ['P3','Outline kasar ecosystem DI BALIK'],
+    ['P2','Isi Life Scorecard akhir Desember + bandingkan dengan baseline'],
+    ['P2','Buat action plan Q1 2027 — BUILD']]]
+];
+const done = store.get('w37-q4', {});
+const host = document.getElementById('checklists');
+let total = 0;
+plan.forEach(([title, items], gi) => {
+  const h = document.createElement('h3'); h.textContent = title; host.appendChild(h);
+  const ul = document.createElement('ul'); ul.className = 'check';
+  items.forEach(([p, text], ii) => {
+    const id = `c${gi}-${ii}`; total++;
+    const li = document.createElement('li');
+    li.innerHTML = `<input type="checkbox" id="${id}"><label for="${id}"><span class="tag ${p}">${p}</span></label>`;
+    li.querySelector('label').append(text);
+    const cb = li.querySelector('input'); cb.checked = !!done[id];
+    cb.onchange = () => { done[id] = cb.checked; store.set('w37-q4', done); progress(); };
+    ul.appendChild(li);
+  });
+  host.appendChild(ul);
+});
+function progress(){
+  const n = Object.values(done).filter(Boolean).length;
+  const pct = Math.round(n / total * 100);
+  document.getElementById('bar').style.width = pct + '%';
+  document.getElementById('pct').textContent = `${n} dari ${total} selesai · ${pct}%`;
+}
+progress();
+
+/* scorecard */
+const areas = [
+  ['Family','Apakah saya hadir untuk keluarga?'],
+  ['Health','Apakah tubuh saya terawat?'],
+  ['Relationship','Apakah relasi utama saya sehat?'],
+  ['Career','Apakah pekerjaan saya semakin bernilai?'],
+  ['Academic','Apakah saya semakin dekat dengan Dr. Winny?'],
+  ['Money','Apakah kekayaan bersih saya bertambah?'],
+  ['Creative','Apakah saya menghasilkan karya?'],
+  ['Network','Apakah saya bertemu orang berkualitas?'],
+  ['Spiritual','Apakah hidup saya memiliki kedalaman?'],
+  ['Joy','Apakah saya masih menikmati hidup?']
+];
+const monthEl = document.getElementById('month');
+monthEl.value = new Date().toISOString().slice(0,7);
+const rows = document.getElementById('scoreRows');
+areas.forEach(([a, q], i) => {
+  const tr = document.createElement('tr');
+  tr.innerHTML = `<td><b>${a}</b></td><td class="q">${q}</td><td><input type="range" min="0" max="10" value="5" id="r${i}" aria-label="${a}"></td><td class="v" id="v${i}">5</td>`;
+  rows.appendChild(tr);
+  tr.querySelector('input').oninput = calc;
+});
+function current(){ return areas.map((_, i) => +document.getElementById('r'+i).value); }
+function calc(){
+  const s = current();
+  s.forEach((v, i) => document.getElementById('v'+i).textContent = v);
+  document.getElementById('avg').textContent = (s.reduce((a,b)=>a+b,0)/s.length).toFixed(1);
+  const min = Math.min(...s);
+  const low = areas.filter((_, i) => s[i] === min).map(a => a[0]).join(', ');
+  document.getElementById('lowest').textContent = `Paling terlantar: ${low} (${min})`;
+}
+const hist = store.get('w37-score', {});
+function loadMonth(){
+  const s = hist[monthEl.value];
+  areas.forEach((_, i) => document.getElementById('r'+i).value = s ? s[i] : 5);
+  calc();
+}
+monthEl.onchange = loadMonth;
+document.getElementById('saveScore').onclick = () => {
+  if (!monthEl.value) return;
+  hist[monthEl.value] = current(); store.set('w37-score', hist); renderHist();
+};
+function renderHist(){
+  const t = document.getElementById('history');
+  const ms = Object.keys(hist).sort();
+  if (!ms.length){ t.innerHTML = ''; return; }
+  t.innerHTML = `<thead><tr><th>Bulan</th>${areas.map(a=>`<th>${a[0].slice(0,4)}</th>`).join('')}<th>Avg</th></tr></thead><tbody>` +
+    ms.map(m => { const s = hist[m]; return `<tr><td>${m}</td>${s.map(v=>`<td>${v}</td>`).join('')}<td><b>${(s.reduce((a,b)=>a+b,0)/s.length).toFixed(1)}</b></td></tr>`; }).join('') + '</tbody>';
+}
+document.getElementById('csv').onclick = () => {
+  const head = ['month', ...areas.map(a=>a[0].toLowerCase()), 'average'];
+  const lines = [head.join(',')].concat(Object.keys(hist).sort().map(m => {
+    const s = hist[m]; return [m, ...s, (s.reduce((a,b)=>a+b,0)/s.length).toFixed(1)].join(',');
+  }));
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([lines.join('\n')], {type:'text/csv'}));
+  a.download = 'life-scorecard-winny.csv'; a.click();
+};
+loadMonth(); renderHist();
+</script>
+</body>
+</html>
